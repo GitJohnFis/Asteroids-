@@ -6,7 +6,6 @@ from constants import *
 
 # this allows us to use the constants or magic #'s
 def main():
-    #print startup message
     pygame.init()
     #initialize the pygame library
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -16,11 +15,9 @@ def main():
         # run the game loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                # check for quit event
-                pygame.quit()
                 # quit the game
                 return
-        screen.fill(black)
+        screen.fill("black")
         # fill the screen with black color
         pygame.display.flip()
         # update the display

@@ -12,22 +12,19 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     #create a screen object with the specified width and height
 
-while True:
-        #run the game loop
+    while True:
+        # run the game loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                #check for quit event
+                # check for quit event
                 pygame.quit()
-                #quit the game
+                # quit the game
                 return
-        screen.fill((0, 0, 0))
-        #fill the screen with black color
+        screen.fill(black)
+        # fill the screen with black color
         pygame.display.flip()
-        #update the display
-    # print("Starting Asteroids!")
-    # print(f"Screen Width: {SCREEN_WIDTH}")
-    # print(f"Screen Height: {SCREEN_HEIGHT}"
-    #add statement to show the game has begun pythonic way
-    if __name__ == "__main__":
+        # update the display
 
-     main()
+# Add statement to show the game has begun in a pythonic way
+if __name__ == "__main__":
+    main()

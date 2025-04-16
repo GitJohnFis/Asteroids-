@@ -4,7 +4,7 @@ import pygame
 # throughout this file
 
 
-
+from player import Player
 from constants import *
 
 # this allows us to use the constants or magic #'s
@@ -14,6 +14,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     #create a screen object with the specified width and height
     clock = pygame.time.Clock()
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT/2)
     dt = 0
     while True:
         # run the game loop
@@ -21,6 +22,7 @@ def main():
             if event.type == pygame.QUIT:# quit the game
                 return
         screen.fill("black") # fill the screen with black color
+        player.draw(screen) #draw the player
         pygame.display.flip()
         # update the display
         # limit the frame rate to 60 FPS

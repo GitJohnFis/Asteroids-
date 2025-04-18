@@ -14,7 +14,16 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     #create a screen object with the specified width and height
     clock = pygame.time.Clock()
+
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    players.containers = (updatable, drawable)
+
+
+
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT/2)
+
     dt = 0
     while True:
         # run the game loop
@@ -22,8 +31,11 @@ def main():
             if event.type == pygame.QUIT:# quit the game
                 return
         
-        player.update(dt)
+        updatable.update(dt)
+        # update the game state
         screen.fill("black") # fill the screen with black color
+        for obj in drawable:
+            obj.draw(screen)
         player.draw(screen) #draw the player
         pygame.display.flip()
         # update the display

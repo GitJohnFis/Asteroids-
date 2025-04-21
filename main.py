@@ -7,7 +7,7 @@ from player import Player
 from constants import *
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
-from shot import Shot
+from shoot import Shot
 
 # this allows us to use the constants or magic #'s
 def main():
@@ -54,7 +54,7 @@ def main():
                 for shot in shots:
                         if shot.collides_with(shot):
                             shot.kill()
-                            asteroid.kill()
+                            asteroid.split()
 
         screen.fill("black") # fill the screen with black color
         for obj in drawable:

@@ -1,12 +1,12 @@
 import pygame
-
 # this allows us to use code from
 # the open-source pygame library
-# throughout this file
 
 
 from player import Player
 from constants import *
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 # this allows us to use the constants or magic #'s
 def main():
@@ -18,6 +18,12 @@ def main():
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    # create a group for updatable objects
+
+    Asteroid.containerts = (asteroids, updatable, drawable)
+    AsteroidField.containers = updatable
+    asteroid_field = AsteroidField()
 
     players.containers = (updatable, drawable)
 

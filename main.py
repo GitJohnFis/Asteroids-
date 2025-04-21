@@ -51,6 +51,11 @@ def main():
                 print("Game Over!")
                 sys.exit()
 
+                for shot in shots:
+                        if shot.collides_with(shot):
+                            shot.kill()
+                            asteroid.kill()
+
         screen.fill("black") # fill the screen with black color
         for obj in drawable:
             obj.draw(screen)

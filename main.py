@@ -7,6 +7,7 @@ from player import Player
 from constants import *
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 # this allows us to use the constants or magic #'s
 def main():
@@ -19,9 +20,12 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     # create a group for updatable objects
 
+    
     Asteroid.containerts = (asteroids, updatable, drawable)
+    Shot.containers = (shots, updatable, drawable)
     AsteroidField.containers = updatable
     asteroid_field = AsteroidField()
 
@@ -40,7 +44,7 @@ def main():
         
         updatable.update(dt)
         # update the game state
-        
+
         # check for collisions between the player and asteroids
         for asteroid in asteroids:
             if player.collides_with(player):

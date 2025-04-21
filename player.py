@@ -6,6 +6,7 @@
     def _init_(self, x, y):
         super._init_(x, y, PLAYER_RADIUS)
         self.rotation = 0
+        self.shoot_timer = 0
  
  def draw(self, screen):
     pygame.draw.polygon(screen, "white", self.triangle(),2)
@@ -21,7 +22,7 @@
 
 def update(self, dt):
         keys = pygame.key.get_pressed()
-
+         self.shoot_timer -= dt
 
          if keys[pygame.K_w]:
             self.move(dt)
@@ -31,6 +32,17 @@ def update(self, dt):
             self.rotate(-dt)
         if keys[pygame.K_d]:
             self.rotate(dt)
+            if keys[pygame.K_SPACE]:
+                self.shoot()
+
+def shoot(self)
+# now you should only be able to shoot if the timer is 0
+if self.shoot_timer > 0: 
+      return
+      self.shoot_timer = PLAYER_SHOOT_RATE
+shot - Shot(self.position.x, self.position.y)
+shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
+
 
 def rotate(self, dt):
    self.rotationn += dt * SELF_TURN_SPEED * dt

@@ -8,6 +8,7 @@ from constants import *
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shoot import Shot
+from powerups import PowerUp
 
 # this allows us to use the constants or magic #'s
 def main():
@@ -21,15 +22,23 @@ def main():
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
     shots = pygame.sprite.Group()
+    powerups = pygame.sprite.Group()
     # create a group for updatable objects
 
     
-    Asteroid.containerts = (asteroids, updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
     Shot.containers = (shots, updatable, drawable)
     AsteroidField.containers = updatable
     asteroid_field = AsteroidField()
+    PowerUp.containers = (powerups, updatable, drawable)
+    #update and draw power-ups
+    for powerup in powerups[:]:
+        powerup.update(dt)
+        powerup.draw(screen)
+
 
     players.containers = (updatable, drawable)
+
 
 
 
@@ -50,11 +59,31 @@ def main():
             if player.collides_with(player):
                 print("Game Over!")
                 sys.exit()
+        # check for collisions between the player and powerups
+        for powerup in powerups:
+            if player.collides_with(powerup)
+            if power_up.power_type == "sheild":
+                player.activate_sheild()
+                elif power_up.power_type == "speed":
+                    player.activate_speed_boost()
+                   powerups.remove(powerup)
+                   # powerup.kill()
 
                 for shot in shots:
                         if shot.collides_with(shot):
                             shot.kill()
                             asteroid.split()
+
+                            # 20% chance to spawn a powerup where asteroid was destroyed
+                            if random.random() <= 0.2:
+                                power_type = random.choice(["shield"],["speed"])
+                                spawn_powerup = PowerUp(asteroid.position.x, asteroid.position.y, power_type)
+                                powerups.append(spawn_powerup) # add the powerup to the group
+                                
+                        
+
+
+
 
         screen.fill("black") # fill the screen with black color
         for obj in drawable:

@@ -10,16 +10,16 @@
         self.rotation = 0
         self.shoot_timer = 0
         self.speed_boost = 1.0
-        self.sheild_active = False 
-        self.sheild_timer = 0
+        self.shield_active = False 
+        self.shield_timer = 0
 
   def collides_with(self, other):
-   # sheild logic  check if the shield is active
-   if sheild.sheild_active and isinstance(other, Asteroid):
-         self.sheild_active = False # shield gets used up
-         return Fasle # no collision registered
- # this keeps code DRY by reusing the collision lofic from circle shape
-         return super().collides_with(other)
+   # shield logic  check if the shield is active
+   if shield.shield_active and isinstance(other, Asteroid):
+         self.shield_active = False # shield gets used up
+         return False # no collision registered
+ # this keeps code DRY by reusing the collision logic from circle shape
+         # return super().collides_with(other)
 
         return self.position.distance_to(other.position) <= self.radius + other.radius
         # check if the distance between the two objects is less than or equal to the sum of their radii
@@ -58,19 +58,19 @@ def update(self, dt):
                   self.position.y += actual_speed * dt
                   self.position.x += actual_speed * dt
 
-                  # update the sheild timer
-                  if self.sheild_active:
-                     self.sheild.timer -= dt
-                     if self.sheild_timer <= 0:
-                        self.sheild_active = False
-                        self.sheild_timer = 0
+                  # update the shield timer
+                  if self.shield_active:
+                     self.shield_timer -= dt
+                     if self.shield_timer <= 0:
+                        self.shield_active = False
+                        self.shield_timer = 0
 
-def shoot(self)
+def shoot(self):
 # now you should only be able to shoot if the timer is 0
 if self.shoot_timer > 0: 
       return
       self.shoot_timer = PLAYER_SHOOT_RATE
-shot - Shot(self.position.x, self.position.y)
+shot = Shot(self.position.x, self.position.y)
 shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
 
 
@@ -83,11 +83,11 @@ def move(self, dt):
 
 # Powerups handling methods activation and deactivation
 def activate_shield(self):
-      self.sheild_active = True
-      self.sheild_timer = PLAYER_SHEILD_TIME # duration of the shield in seconds
+      self.shield_active = True
+      self.shield_timer = PLAYER_SHIELD_TIME # duration of the shield in seconds
 
 def activate_speed_boost(self):
-      self.sheild_boost = SPEED_BOOST_MULTI # multiplier for speed
+      self.shield_boost = SPEED_BOOST_MULTI # multiplier for speed
       pygame.time.set_timer(SPEED_BOOST_END_EVENT, int(SPEED_BOOST_DURATION * 1000), 1) # set a timer for the speed boost
 
 def deactivate_speed_boost(self):

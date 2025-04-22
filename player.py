@@ -2,16 +2,28 @@
  from constants import *
  from circleshape import CircleShape
  form shoot import Shot
-
+ from asteroid import Asteroid
 
  class Player(CircleShape):
-    def _init_(self, x, y):
-        super._init_(x, y, PLAYER_RADIUS)
+    def __init__(self, x, y):
+        super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_timer = 0
         self.speed_boost = 1.0
         self.sheild_active = False 
         self.sheild_timer = 0
+
+  def collides_with(self, other):
+   # sheild logic  check if the shield is active
+   if sheild.sheild_active and isinstance(other, Asteroid):
+         self.sheild_active = False # shield gets used up
+         return Fasle # no collision registered
+ # this keeps code DRY by reusing the collision lofic from circle shape
+         return super().collides_with(other)
+
+        return self.position.distance_to(other.position) <= self.radius + other.radius
+        # check if the distance between the two objects is less than or equal to the sum of their radii
+        # if so, they are colliding
  
  def draw(self, screen):
     pygame.draw.polygon(screen, "white", self.triangle(),2)
@@ -52,7 +64,7 @@ def update(self, dt):
                      if self.sheild_timer <= 0:
                         self.sheild_active = False
                         self.sheild_timer = 0
-                        
+
 def shoot(self)
 # now you should only be able to shoot if the timer is 0
 if self.shoot_timer > 0: 
@@ -67,7 +79,7 @@ def rotate(self, dt):
 
 def move(self, dt):
    forward = pygame.Vector2(0, 1).rotate(self.rotation)
-   self.potion += forward *  PLAYER_SPEED * dt
+   self.position += forward *  PLAYER_SPEED * dt
 
 # Powerups handling methods activation and deactivation
 def activate_shield(self):

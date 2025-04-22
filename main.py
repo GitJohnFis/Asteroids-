@@ -1,4 +1,6 @@
 import pygame
+import sys
+import random
 # this allows us to use code from
 # the open-source pygame library
 
@@ -32,9 +34,9 @@ def main():
     asteroid_field = AsteroidField()
     PowerUp.containers = (powerups, updatable, drawable)
     #update and draw power-ups
-    for powerup in powerups[:]:
-        powerup.update(dt)
-        powerup.draw(screen)
+    for power_up in powerups[:]:
+        power_up.update(dt)
+        power_up.draw(screen)
 
 
     players.containers = (updatable, drawable)
@@ -50,36 +52,36 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT: # quit the game
                 return
-            elif event.typee == SPEED_BOOST_END_EVENT:
+            elif event.type == SPEED_BOOST_END_EVENT:
                 player.deactivate_speed_boost()
         updatable.update(dt)
         # update the game state
 
         # check for collisions between the player and asteroids
         for asteroid in asteroids:
-            if player.collides_with(player):
+            if player.collides_with(asteroid):
                 print("Game Over!")
                 sys.exit()
         # check for collisions between the player and powerups
-        for powerup in powerups:
-            if player.collides_with(powerup)
+        for power_up in powerups:
+            if player.collides_with(power_up):
             if power_up.power_type == "shield":
                 player.activate_shield()
                 elif power_up.power_type == "speed":
                     player.activate_speed_boost()
-                   powerups.remove(powerup)
-                   # powerup.kill()
+                   power_up.kill()
+                    #powerups.remove(power_up)
 
                 for shot in shots:
-                        if shot.collides_with(shot):
+                        if asteroid.collides_with(shot):
                             shot.kill()
                             asteroid.split()
 
-                            # 20% chance to spawn a powerup where asteroid was destroyed
+                            # 20% chance to spawn a power_up where asteroid was destroyed
                             if random.random() <= 0.2:
                                 power_type = random.choice(["shield"],["speed"])
                                 spawn_powerup = PowerUp(asteroid.position.x, asteroid.position.y, power_type)
-                                powerups.append(spawn_powerup) # add the powerup to the group
+                                powerups.append(spawn_powerup) # add the power_up to the group
 
         screen.fill("black") # fill the screen with black color
         for obj in drawable:

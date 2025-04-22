@@ -48,9 +48,10 @@ def main():
     while True:
         # run the game loop
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:# quit the game
+            if event.type == pygame.QUIT: # quit the game
                 return
-        
+            elif event.typee == SPEED_BOOST_END_EVENT:
+                player.deactivate_speed_boost()
         updatable.update(dt)
         # update the game state
 
@@ -62,8 +63,8 @@ def main():
         # check for collisions between the player and powerups
         for powerup in powerups:
             if player.collides_with(powerup)
-            if power_up.power_type == "sheild":
-                player.activate_sheild()
+            if power_up.power_type == "shield":
+                player.activate_shield()
                 elif power_up.power_type == "speed":
                     player.activate_speed_boost()
                    powerups.remove(powerup)
@@ -79,11 +80,6 @@ def main():
                                 power_type = random.choice(["shield"],["speed"])
                                 spawn_powerup = PowerUp(asteroid.position.x, asteroid.position.y, power_type)
                                 powerups.append(spawn_powerup) # add the powerup to the group
-                                
-                        
-
-
-
 
         screen.fill("black") # fill the screen with black color
         for obj in drawable:

@@ -2,6 +2,7 @@ import pygame
 import random
 from constants import *
 
+
 class PowerUp(pygame.sprite.Sprite):
     containers = None
 
@@ -18,7 +19,7 @@ class PowerUp(pygame.sprite.Sprite):
         elif power_type == "speed":
             # Draw a green speed power-up
             pygame.draw.circle(self.image, "green", (10, 10), 10)
-        
+
         self.rect = self.image.get_rect(center=(x, y))
         self.radius = 10  # For collision detection
 

@@ -1,3 +1,5 @@
+import pygame
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
@@ -10,13 +12,13 @@ PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200
 
 PLAYER_SHOOT_SPEED = 500
-PLAYER_SHOOT_RATE = 0.3   # seconds
+PLAYER_SHOOT_RATE = 0.3  # seconds
 
 SHOT_RADIUS = 5
 
-PLAYER_SHIELD_RADIUS = 30 # a bit bigger than the player
+PLAYER_SHIELD_RADIUS = 30  # a bit bigger than the player
 PLAYER_SHIELD_TIME = 5
 
 SPEED_BOOST_MULTI = 2.0
-SPEED_BOOST_RATE = 3.0 # seconds
+SPEED_BOOST_RATE = 3.0  # seconds
 SPEED_BOOST_END_EVENT = pygame.USEREVENT + 1  # Custom event ID

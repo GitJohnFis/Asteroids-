@@ -40,7 +40,7 @@ def shoot(self)
 if self.shoot_timer > 0: 
       return
 self.shoot_timer = PLAYER_SHOOT_RATE
-shot - Shot(self.position.x, self.position.y)
+shot = Shot(self.position.x, self.position.y)
 shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
 
 
@@ -53,8 +53,8 @@ def move(self, dt):
 
 # Powerups handling methods
 def activate_shield(self):
-      self.sheild_active = True
-      self.sheild_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
+      self.shield_active = True
+      self.shield_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
 
 def activate_speed_boost(self):
       self.shield_boost = SPEED_BOOST_MULTI #multiplier for speed

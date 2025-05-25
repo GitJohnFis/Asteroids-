@@ -54,10 +54,10 @@ def move(self, dt):
 # Powerups handling methods
 def activate_shield(self):
       self.sheild_active = True
-      self.sheild_timer = PLAYER_SHEILD_TIME #duration of the sheild in seconds
+      self.sheild_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
 
 def activate_speed_boost(self):
-      self.sheild_boost = SPEED_BOOST_MULTI #multiplier for speed
+      self.shield_boost = SPEED_BOOST_MULTI #multiplier for speed
       pygame.time.set_timer(pygame, SPEED_BOOST_DURATION * 1000, 1) #set a timer for the speed boost
 
 def deactivate_speed_boost(self):

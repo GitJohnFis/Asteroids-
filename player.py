@@ -39,7 +39,7 @@ def shoot(self)
 # now you should only be able to shoot if the timer is 0
 if self.shoot_timer > 0: 
       return
-      self.shoot_timer = PLAYER_SHOOT_RATE
+self.shoot_timer = PLAYER_SHOOT_RATE
 shot - Shot(self.position.x, self.position.y)
 shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
 

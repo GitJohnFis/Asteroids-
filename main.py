@@ -76,7 +76,7 @@ def main():
 
                             # 20% chance to spawn a powerup where asteroid was destroyed
                             if random.random() <= 0.2:
-                                power_type = random.choice(["shield"],["speed"])
+                                power_type = random.choice(["shield", "speed"])
                                 spawn_powerup = PowerUp(asteroid.position.x, asteroid.position.y, power_type)
                                 powerups.append(spawn_powerup) # add the powerup to the group
                                 

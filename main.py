@@ -62,8 +62,8 @@ def main():
         # check for collisions between the player and powerups
         for powerup in powerups:
             if player.collides_with(powerup)
-            if power_up.power_type == "sheild":
-                player.activate_sheild()
+            if power_up.power_type == "shield": # :check: fixed all mispelling for 'sheild'
+                player.activate_shield()
                 elif power_up.power_type == "speed":
                     player.activate_speed_boost()
                    powerups.remove(powerup)

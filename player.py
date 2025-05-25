@@ -3,7 +3,7 @@
  from circleshape import CircleShape
  
  class Player(CircleShape):
-    def _init_(self, x, y):
+    def __init__(self, x, y):
         super._init_(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_timer = 0
@@ -35,7 +35,7 @@ def update(self, dt):
             if keys[pygame.K_SPACE]:
                 self.shoot()
 
-def shoot(self)
+def shoot(self):
 # now you should only be able to shoot if the timer is 0
 if self.shoot_timer > 0: 
       return
@@ -49,7 +49,7 @@ def rotate(self, dt):
 
 def move(self, dt):
    forward = pygame.Vector2(0, 1).rotate(self.rotation)
-   self.potion += forward *  PLAYER_SPEED * dt
+   self.position += forward *  PLAYER_SPEED * dt
 
 # Powerups handling methods
 def activate_shield(self):
@@ -57,7 +57,7 @@ def activate_shield(self):
       self.shield_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
 
 def activate_speed_boost(self):
-      self.shield_boost = SPEED_BOOST_MULTI #multiplier for speed
+      self.shield_boost = SPEED_BOOST_MULTI # multiplier for speed
       pygame.time.set_timer(pygame, SPEED_BOOST_DURATION * 1000, 1) #set a timer for the speed boost
 
 def deactivate_speed_boost(self):

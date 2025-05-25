@@ -1,4 +1,9 @@
 import pygame
+import sys
+import random
+"""
+import all written imports in code causing import errors
+"""
 # this allows us to use code from
 # the open-source pygame library
 

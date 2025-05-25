@@ -7,6 +7,12 @@
         super._init_(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_timer = 0
+       """
+       Add new initialization with powerups and new feat...
+       """
+        self.shield_active = False
+        self.shield_timer = 0
+        self.speed_boost = 1.0
  
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(),2)
@@ -22,18 +28,18 @@
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
-         self.shoot_timer -= dt
+        self.shoot_timer -= dt
 
-         if keys[pygame.K_w]:
+        if keys[pygame.K_w]:
             self.move(dt)
         if keys[pygame.K_s]:
-         self.move(-dt)
-         if keys[pygame.K_a]:
+            self.move(-dt)
+        if keys[pygame.K_a]:
             self.rotate(-dt)
         if keys[pygame.K_d]:
             self.rotate(dt)
-            if keys[pygame.K_SPACE]:
-                self.shoot()
+        if keys[pygame.K_SPACE]:
+            self.shoot()
 
    def shoot(self):
      # now you should only be able to shoot if the timer is 0

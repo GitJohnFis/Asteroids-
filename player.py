@@ -53,25 +53,25 @@
        shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
 
 
-  def rotate(self, dt):
+   def rotate(self, dt):
    """Fixed: Removed duplicate dt in rotation logic."""
       self.rotation += SELF_TURN_SPEED * dt
 
-  def move(self, dt):
+   def move(self, dt):
    """Fixed: Multiplied by speed_boost and ensured forward vector uses rotation."""
       forward = pygame.Vector2(0, 1).rotate(self.rotation)
       self.position += forward * PLAYER_SPEED * self.speed_boost * dt
 
    # Powerups handling methods
-  def activate_shield(self):
+   def activate_shield(self):
    """Fixed: Corrected attribute name and timer logic."""
       self.shield_active = True
       self.shield_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
 
-  def activate_speed_boost(self):
+   def activate_speed_boost(self):
    """Fixed: Used consistent speed_boost attribute and left timer logic for event handling."""
       self.shield_boost = SPEED_BOOST_MULTI # multiplier for speed
       pygame.time.set_timer(pygame, SPEED_BOOST_DURATION * 1000, 1) #set a timer for the speed boost
 
-  def deactivate_speed_boost(self):
+   def deactivate_speed_boost(self):
       self.speed_boost = 1.0 #reset the normal speed

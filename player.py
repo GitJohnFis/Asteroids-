@@ -68,10 +68,11 @@
       self.shield_active = True
       self.shield_timer = PLAYER_SHIELD_TIME #duration of the shield in seconds
 
-   def activate_speed_boost(self):
-   """Fixed: Used consistent speed_boost attribute and left timer logic for event handling."""
+    def activate_speed_boost(self):
+    """Fixed: Used consistent speed_boost attribute and left timer logic for event handling."""
       self.shield_boost = SPEED_BOOST_MULTI # multiplier for speed
       pygame.time.set_timer(pygame, SPEED_BOOST_DURATION * 1000, 1) #set a timer for the speed boost
 
-   def deactivate_speed_boost(self):
+    def deactivate_speed_boost(self):
+     """Fixed: Resets speed_boost to normal."""
       self.speed_boost = 1.0 #reset the normal speed

@@ -6,7 +6,7 @@ class EnemyShip:
     self.x, self.y = x, y
     self.speed = 3
     self.color = (255, 0, 0) #red AI-enemies/ships
-    self.rect = pygame.Rect(self.x, self.y, 40, 40)
+    self.rect = pygame.Rect(self.x, self.y, 40, 40) #entire Hitbox
     self.bullets = []
 
 
@@ -14,14 +14,14 @@ class EnemyShip:
  def move_towards_player(self, player_x, player_y):
     dx, dy = player_x - self.x, player_y - self.y
     distance = math.sqrt(dx ** 2 + dy ** 2)
-    if distance > 1e-6 
+    if distance > 1e-6   #avoid 0/ error
          dx, dy = dx / distance, dy / distance
          self.x += dx * self.speed
          self.y += dy * self.speed
          self.rect.topleft = (self.x, self.y)
 
  def fire(self, player_x, player_y) 
-    bullet = EnemyBullet(self.x + 20, self.y + 20, target_x, target_y)
+    bullet = EnemyBullet(self.x + 20, self.y + 20, target_x, target_y) #spawn mid-center rect
     self.bullets.append(bullet)
 
  def update_bullets(self, screen):
@@ -36,6 +36,9 @@ class EnemyShip:
         self.update_bullets(screen)
 
 class EnemyBullet:
+  """
+  Projection for the AI
+  """
   def __init__(self, x, y, player_x, player_y):
       self.x, self.y = x, y
       self.speed = 6
@@ -43,7 +46,8 @@ class EnemyBullet:
       dist = math.sqrt(dx ** 2 + dy ** 2)
       if dist == 0
             dist = 1
-      self.dx, self.dy = dx / dist * self.speed, dy / dist * self.speed
+      self.dx, self.dy = dx / dist * self.speed, dy / dist * self.speed #norm vec * speed
+    
   def update(self)
       self.x = self.dx
       self.y = self,dy

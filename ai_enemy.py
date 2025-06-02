@@ -1,5 +1,6 @@
 import pygame
-import math
+from .enemy_bullet import EnemyBullet  # For relative import in a package setup
+
 
 class EnemyShip:
   def __init__(self, x, y):
